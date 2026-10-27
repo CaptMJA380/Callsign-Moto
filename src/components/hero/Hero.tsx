@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import { ArrowRight, ChevronRight, Sparkles, ShieldCheck, MapPin, Eye } from 'lucide-react';
-import { LivePatchPreview } from '../customizer/LivePatchPreview';
+import React from 'react';
+import { ArrowRight, ChevronRight, ShieldCheck } from 'lucide-react';
 
 export const Hero: React.FC = () => {
-  const [heroView, setHeroView] = useState<'ladakh' | 'pov' | 'customiser'>('ladakh');
-
   return (
     <section className="relative pt-24 pb-20 sm:pt-32 sm:pb-32 overflow-hidden bg-transparent text-center transition-colors duration-300">
       
@@ -33,7 +30,7 @@ export const Hero: React.FC = () => {
         </p>
 
         {/* Action Pills */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-10">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-12">
           <a
             href="#customise"
             className="w-full sm:w-auto px-7 py-3 rounded-full bg-black text-white dark:bg-white dark:text-black hover:opacity-90 text-[13px] font-sans font-medium transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-1.5"
@@ -51,140 +48,54 @@ export const Hero: React.FC = () => {
           </a>
         </div>
 
-        {/* Hero View Switcher Pill */}
-        <div className="flex justify-center mb-6">
-          <div className="inline-flex p-1 rounded-full bg-black/[0.05] dark:bg-white/[0.06] border border-black/[0.08] dark:border-white/[0.08] backdrop-blur-md">
-            <button
-              onClick={() => setHeroView('ladakh')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-sans transition-all ${
-                heroView === 'ladakh'
-                  ? 'bg-white dark:bg-white text-black font-semibold shadow-sm'
-                  : 'text-[#86868B] hover:text-black dark:hover:text-white'
-              }`}
-            >
-              <MapPin className="w-3.5 h-3.5 text-rose-500" />
-              <span>Ladakh Pass (Worn)</span>
-            </button>
-
-            <button
-              onClick={() => setHeroView('pov')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-sans transition-all ${
-                heroView === 'pov'
-                  ? 'bg-white dark:bg-white text-black font-semibold shadow-sm'
-                  : 'text-[#86868B] hover:text-black dark:hover:text-white'
-              }`}
-            >
-              <Eye className="w-3.5 h-3.5 text-amber-500" />
-              <span>Rider's POV</span>
-            </button>
-
-            <button
-              onClick={() => setHeroView('customiser')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-sans transition-all ${
-                heroView === 'customiser'
-                  ? 'bg-white dark:bg-white text-black font-semibold shadow-sm'
-                  : 'text-[#86868B] hover:text-black dark:hover:text-white'
-              }`}
-            >
-              <Sparkles className="w-3 h-3 text-amber-500" />
-              <span>Live Customiser</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Dynamic Hero Showcase Stage */}
+        {/* Rider Showcase Stage (Image of the rider wearing the velcro tab) */}
         <div className="relative max-w-3xl mx-auto">
-          {heroView === 'ladakh' ? (
-            /* 1. REALISTIC DOCUMENTARY PHOTOGRAPH: RIDER AT KHARDUNG LA PASS, LADAKH */
-            <div className="relative rounded-3xl overflow-hidden glass-panel p-2.5 sm:p-3.5 shadow-2xl border border-black/10 dark:border-white/10 group">
-              <div className="relative aspect-[16/10] sm:aspect-[16/9.5] rounded-2xl overflow-hidden bg-black">
-                <img
-                  src="/assets/rider-ladakh-chest.jpg"
-                  alt="Motorcycle rider standing at Khardung La Pass in Ladakh wearing custom embroidered velcro name tab on chest"
-                  className="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-[1.02]"
-                />
-
-                {/* Subtle gradient vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20 pointer-events-none" />
-
-                {/* Chest Callout Beacon - Realistic 125x30mm scale */}
-                <div className="absolute top-[42%] left-[43%] -translate-x-1/2 -translate-y-1/2 z-20 flex items-center gap-2">
-                  <div className="relative flex items-center justify-center">
-                    <span className="animate-ping absolute inline-flex h-5 w-5 rounded-full bg-[#EAB308] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#EAB308] border-2 border-white shadow-md" />
-                  </div>
-                  <div className="px-3 py-1.5 rounded-xl bg-black/85 backdrop-blur-md border border-white/20 text-white shadow-xl text-left">
-                    <div className="text-[11px] font-sans font-semibold tracking-wide text-[#FEF08A] flex items-center gap-1.5">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#EAB308]" />
-                      BHUSHAN O+ (125 × 30 mm)
-                    </div>
-                    <div className="text-[10px] text-zinc-300 font-mono">
-                      Left Upper Chest Loop Pocket Mount
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Card Caption Overlay with Real Place in Ladakh */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-4 py-2.5 rounded-xl bg-black/75 backdrop-blur-md border border-white/15 text-white">
-                  <div className="flex items-center space-x-2 text-left">
-                    <span className="w-2 h-2 rounded-full bg-[#EAB308]" />
-                    <span className="text-[12px] font-sans font-medium text-zinc-200">
-                      Khardung La Pass, Ladakh • Triumph Tiger Rally Pro
-                    </span>
-                  </div>
-                  <a
-                    href="#customise"
-                    className="text-[11px] font-sans font-semibold text-[#FEF08A] hover:underline flex items-center gap-1"
-                  >
-                    <span>Create Yours</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ) : heroView === 'pov' ? (
-            /* 2. FIRST-PERSON RIDER'S POV: INDIAN TERRAIN & LADAKH MOUNTAIN PASS */
-            <div className="relative rounded-3xl overflow-hidden glass-panel p-2.5 sm:p-3.5 shadow-2xl border border-black/10 dark:border-white/10 group">
-              <div className="relative aspect-[16/10] sm:aspect-[16/9.5] rounded-2xl overflow-hidden bg-black">
-                <img
-                  src="/assets/rider-pov-ladakh.jpg"
-                  alt="First-person motorcycle rider perspective cockpit view riding on scenic Ladakh mountain pass road"
-                  className="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-[1.02]"
-                />
-
-                {/* Subtle gradient vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20 pointer-events-none" />
-
-                {/* Bottom Card Caption Overlay */}
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-4 py-2.5 rounded-xl bg-black/75 backdrop-blur-md border border-white/15 text-white">
-                  <div className="flex items-center space-x-2 text-left">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                    <span className="text-[12px] font-sans font-medium text-zinc-200">
-                      Rider's Perspective: Open Roads of Ladakh, India
-                    </span>
-                  </div>
-                  <a
-                    href="#customise"
-                    className="text-[11px] font-sans font-semibold text-[#FEF08A] hover:underline flex items-center gap-1"
-                  >
-                    <span>Customise Tab</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ) : (
-            /* 3. INTERACTIVE LIVE EMBROIDERY STAGE */
-            <div className="relative z-20 transition-transform duration-500 hover:scale-[1.01]">
-              <LivePatchPreview
-                variantId="NAME_BLOOD"
-                riderName="BHUSHAN"
-                bloodGroup="O+"
-                hasFlag={false}
-                showInspectionControls={true}
+          <div className="relative rounded-3xl overflow-hidden glass-panel p-2.5 sm:p-3.5 shadow-2xl border border-black/10 dark:border-white/10 group">
+            <div className="relative aspect-[16/10] sm:aspect-[16/9.5] rounded-2xl overflow-hidden bg-black">
+              <img
+                src="/assets/rider-ladakh-chest.jpg"
+                alt="Motorcycle rider standing at Khardung La Pass in Ladakh wearing custom embroidered velcro name tab on chest"
+                className="w-full h-full object-cover object-center transform transition-transform duration-700 group-hover:scale-[1.02]"
               />
+
+              {/* Subtle gradient vignette */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20 pointer-events-none" />
+
+              {/* Chest Callout Beacon - Realistic 125x30mm scale */}
+              <div className="absolute top-[42%] left-[43%] -translate-x-1/2 -translate-y-1/2 z-20 flex items-center gap-2">
+                <div className="relative flex items-center justify-center">
+                  <span className="animate-ping absolute inline-flex h-5 w-5 rounded-full bg-[#EAB308] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#EAB308] border-2 border-white shadow-md" />
+                </div>
+                <div className="px-3 py-1.5 rounded-xl bg-black/85 backdrop-blur-md border border-white/20 text-white shadow-xl text-left">
+                  <div className="text-[11px] font-sans font-semibold tracking-wide text-[#FEF08A] flex items-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#EAB308]" />
+                    BHUSHAN O+ (125 × 30 mm)
+                  </div>
+                  <div className="text-[10px] text-zinc-300 font-mono">
+                    Left Upper Chest Loop Pocket Mount
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Card Caption Overlay */}
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between px-4 py-2.5 rounded-xl bg-black/75 backdrop-blur-md border border-white/15 text-white">
+                <div className="flex items-center space-x-2 text-left">
+                  <span className="w-2 h-2 rounded-full bg-[#EAB308]" />
+                  <span className="text-[12px] font-sans font-medium text-zinc-200">
+                    Khardung La Pass, Ladakh • Triumph Tiger Rally Pro
+                  </span>
+                </div>
+                <a
+                  href="#customise"
+                  className="text-[11px] font-sans font-semibold text-[#FEF08A] hover:underline flex items-center gap-1"
+                >
+                  <span>Create Yours</span>
+                  <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
             </div>
-          )}
+          </div>
 
           <div className="w-3/4 h-8 bg-black/10 dark:bg-black/80 blur-xl mx-auto -mt-4 rounded-full pointer-events-none" />
         </div>
